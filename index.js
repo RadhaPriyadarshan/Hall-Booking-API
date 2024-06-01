@@ -107,6 +107,19 @@ app.get('/bookings', (req, res) => {
     res.json(customerBookings);
 });
 
+app.get('/', (req, res) => {
+    res.json({
+        message: "Server started successfully. Use the following endpoints:",
+        endpoints: {
+            createHall: "POST /createHall",
+            createBooking: "POST /createBooking",
+            listRooms: "GET /rooms/booking",
+            listCustomers: "GET /customers/booking",
+            listCustomerBookings: "GET /bookings?customerId={id}"
+        }
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
